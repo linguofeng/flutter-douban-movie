@@ -1,5 +1,5 @@
 import 'package:douban_movie/pages/main.page.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 
 class DoubanApp extends StatelessWidget {
   @override

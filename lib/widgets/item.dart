@@ -2,7 +2,7 @@ import 'package:douban_movie/blocs/blocs.dart';
 import 'package:douban_movie/models/subject.dart';
 import 'package:douban_movie/pages/detail.page.dart';
 import 'package:douban_movie/widgets/rate.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Item extends StatelessWidget {
@@ -36,7 +36,7 @@ class Item extends StatelessWidget {
                       width: 100,
                       height: 100,
                       child: Image.network(
-                        subject.cover.url,
+                        subject.cover.url.replaceAll('https', 'http'),
                         scale: 0.5,
                         fit: BoxFit.fitWidth,
                       ),
@@ -46,7 +46,7 @@ class Item extends StatelessWidget {
                       child: AspectRatio(
                         aspectRatio: 3 / 4,
                         child: Image.network(
-                          subject.cover.url,
+                          subject.cover.url.replaceAll('https', 'http'),
                           scale: 0.5,
                           fit: BoxFit.fitWidth,
                         ),

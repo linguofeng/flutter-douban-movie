@@ -1,5 +1,5 @@
 import 'package:douban_movie/blocs/blocs.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Detail extends StatelessWidget {
@@ -34,7 +34,7 @@ class Detail extends StatelessWidget {
                           tag: 'image_${state.detail.id}',
                           child: Card(
                             child: Image.network(
-                              state.detail.image,
+                              state.detail.image.replaceAll('https', 'http'),
                               width: 100,
                             ),
                           ),
@@ -77,7 +77,8 @@ class Detail extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Image.network(
-                                state.detail.actors[index].avatar,
+                                state.detail.actors[index].avatar
+                                    .replaceAll('https', 'http'),
                                 width: 80,
                                 fit: BoxFit.fitWidth,
                               ),
@@ -121,7 +122,8 @@ class Detail extends StatelessWidget {
                                     alignment: Alignment.center,
                                     children: <Widget>[
                                       Image.network(
-                                        state.trailers.first.coverUrl,
+                                        state.trailers.first.coverUrl
+                                            .replaceAll('https', 'http'),
                                         fit: BoxFit.fitHeight,
                                       ),
                                       Icon(
@@ -148,7 +150,8 @@ class Detail extends StatelessWidget {
                                       .photos[index -
                                           (state.trailers.length > 0 ? 1 : 0)]
                                       .image
-                                      .normal,
+                                      .normal
+                                      .replaceAll('https', 'http'),
                                   fit: BoxFit.fitHeight,
                                 ),
                         ),

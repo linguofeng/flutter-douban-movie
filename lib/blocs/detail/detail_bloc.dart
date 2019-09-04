@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:douban_movie/models/photo.dart';
 import 'package:douban_movie/models/subject_detail.dart';
 import 'package:douban_movie/models/trailer.dart';
+import 'package:http/http.dart' as http;
 import './detail.dart';
 
 class DetailBloc extends Bloc<DetailEvent, DetailState> {
@@ -17,22 +17,20 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
   ) async* {
     if (event is LoadDetail) {
       {
-        final json = await HttpClient()
-            .getUrl(Uri.parse(
-              'https://frodo.douban.com/api/v2/${event.type}/${event.id}?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
-            ))
-            .then((request) => request.close())
-            .then((response) => response.transform(Utf8Decoder()).join())
+        final json = await http
+            .get(
+              'http://localhost:8081/api/v2/${event.type}/${event.id}?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
+            )
+            .then((response) => response.body)
             .then((data) => jsonDecode(data));
         yield DetailLoaded(SubjectDetail.fromJson(json));
       }
       {
-        final json = await HttpClient()
-            .getUrl(Uri.parse(
-              'https://frodo.douban.com/api/v2/${event.type}/${event.id}/trailers?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
-            ))
-            .then((request) => request.close())
-            .then((response) => response.transform(Utf8Decoder()).join())
+        final json = await http
+            .get(
+              'http://localhost:8081/api/v2/${event.type}/${event.id}/trailers?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
+            )
+            .then((response) => response.body)
             .then((data) => jsonDecode(data));
         final state = currentState;
         if (state is DetailLoaded) {
@@ -46,12 +44,11 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
         }
       }
       {
-        final json = await HttpClient()
-            .getUrl(Uri.parse(
-              'https://frodo.douban.com/api/v2/${event.type}/${event.id}/photos?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
-            ))
-            .then((request) => request.close())
-            .then((response) => response.transform(Utf8Decoder()).join())
+        final json = await http
+            .get(
+              'http://localhost:8081/api/v2/${event.type}/${event.id}/photos?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
+            )
+            .then((response) => response.body)
             .then((data) => jsonDecode(data));
         final state = currentState;
         if (state is DetailLoaded) {

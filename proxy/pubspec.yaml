@@ -1,0 +1,16 @@
+name: proxy
+description: A web server built using the shelf package.
+# version: 1.0.0
+# homepage: https://www.example.com
+# author: 林国锋 <linguofeng@msn.com>
+
+environment:
+  sdk: '>=2.4.0 <3.0.0'
+
+dependencies:
+  args: ^1.5.0
+  shelf: ^0.7.2
+  shelf_proxy: ^0.1.0+7
+
+dev_dependencies:
+  pedantic: ^1.7.0
