@@ -10,16 +10,49 @@ class Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Container(
-          width: 60,
-          height: 100,
-          child: Image.network(subject.cover.url),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(4.0),
+          child: subject.type == 'music'
+              ? SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: Image.network(
+                    subject.cover.url,
+                    scale: 0.5,
+                    fit: BoxFit.fitWidth,
+                  ),
+                )
+              : SizedBox(
+                  width: 100,
+                  child: AspectRatio(
+                    aspectRatio: 3 / 4,
+                    child: Image.network(
+                      subject.cover.url,
+                      scale: 0.5,
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
+                ),
         ),
-        Text(subject.title),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Text(
+            subject.title,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontWeight: FontWeight.w600),
+          ),
+        ),
         subject.rating != null
             ? Rate(value: subject.rating.value)
-            : Text('暂无评分'),
+            : Text(
+                '暂无评分',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 11.0,
+                ),
+              ),
       ],
     );
   }

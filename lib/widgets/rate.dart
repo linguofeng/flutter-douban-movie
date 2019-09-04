@@ -27,8 +27,10 @@ class Rate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         ...[2, 4, 6, 8, 10].map(_buildStar).toList(),
+        SizedBox(width: 4.0),
         Text(
           '${value.toStringAsFixed(1)}',
           style: TextStyle(

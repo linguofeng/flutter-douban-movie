@@ -15,20 +15,18 @@ class MorePage extends StatelessWidget {
         title: Text(title),
       ),
       body: BlocBuilder<HomeBloc, HomeState>(
-        bloc: BlocProvider.of<HomeBloc>(context),
         builder: (context, state) => GridView.builder(
-          itemCount: state.showing.length,
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
-            mainAxisSpacing: 20.0,
-            crossAxisSpacing: 20.0,
-            childAspectRatio: 0.5,
+            mainAxisSpacing: 10.0,
+            crossAxisSpacing: 10.0,
+            childAspectRatio: 0.6,
           ),
-          itemBuilder: (context, index) {
-            return Item(
-              subject: state.showing[index],
-            );
-          },
+          itemCount: state.showing.length,
+          itemBuilder: (context, index) => Item(
+            subject: state.showing[index],
+          ),
         ),
       ),
     );

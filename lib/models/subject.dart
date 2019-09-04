@@ -9,11 +9,19 @@ part 'subject.g.dart';
 class Subject {
   final String id;
   final String title;
+  final String type;
   final Cover cover;
   final Rating rating;
   final List<Comment> comments;
 
-  Subject({this.id, this.title, this.cover, this.rating, this.comments});
+  Subject({
+    this.id,
+    this.title,
+    this.type,
+    this.cover,
+    this.rating,
+    this.comments,
+  });
   factory Subject.fromJson(Map<String, dynamic> json) =>
       _$SubjectFromJson(json);
   Map<String, dynamic> toJson() => _$SubjectToJson(this);

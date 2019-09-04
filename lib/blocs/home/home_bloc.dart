@@ -14,16 +14,72 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeEvent event,
   ) async* {
     if (event is LoadShowing) {
-      final json = await HttpClient()
-          .getUrl(Uri.parse(
-              'https://frodo.douban.com/api/v2/subject_collection/movie_showing/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a'))
-          .then((request) => request.close())
-          .then((response) => response.transform(Utf8Decoder()).join())
-          .then((data) => jsonDecode(data));
-      final items = json['subject_collection_items'] as List<dynamic>;
-      final list = items.map((item) => Subject.fromJson(item)).toList();
-      print(list);
-      yield HomeState(showing: list);
+      {
+        final json = await HttpClient()
+            .getUrl(Uri.parse(
+                'https://frodo.douban.com/api/v2/subject_collection/movie_showing/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a'))
+            .then((request) => request.close())
+            .then((response) => response.transform(Utf8Decoder()).join())
+            .then((data) => jsonDecode(data));
+        final items = json['subject_collection_items'] as List<dynamic>;
+        final list = items.map((item) => Subject.fromJson(item)).toList();
+        yield currentState.copyWith(showing: list);
+      }
+      {
+        final json = await HttpClient()
+            .getUrl(Uri.parse(
+                'https://frodo.douban.com/api/v2/subject_collection/movie_hot_gaia/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a'))
+            .then((request) => request.close())
+            .then((response) => response.transform(Utf8Decoder()).join())
+            .then((data) => jsonDecode(data));
+        final items = json['subject_collection_items'] as List<dynamic>;
+        final list = items.map((item) => Subject.fromJson(item)).toList();
+        yield currentState.copyWith(hot: list);
+      }
+      {
+        final json = await HttpClient()
+            .getUrl(Uri.parse(
+                'https://frodo.douban.com/api/v2/subject_collection/tv_hot/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a'))
+            .then((request) => request.close())
+            .then((response) => response.transform(Utf8Decoder()).join())
+            .then((data) => jsonDecode(data));
+        final items = json['subject_collection_items'] as List<dynamic>;
+        final list = items.map((item) => Subject.fromJson(item)).toList();
+        yield currentState.copyWith(tvHot: list);
+      }
+      {
+        final json = await HttpClient()
+            .getUrl(Uri.parse(
+                'https://frodo.douban.com/api/v2/subject_collection/tv_variety_show/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a'))
+            .then((request) => request.close())
+            .then((response) => response.transform(Utf8Decoder()).join())
+            .then((data) => jsonDecode(data));
+        final items = json['subject_collection_items'] as List<dynamic>;
+        final list = items.map((item) => Subject.fromJson(item)).toList();
+        yield currentState.copyWith(tvShow: list);
+      }
+      {
+        final json = await HttpClient()
+            .getUrl(Uri.parse(
+                'https://frodo.douban.com/api/v2/subject_collection/book_bestseller/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a'))
+            .then((request) => request.close())
+            .then((response) => response.transform(Utf8Decoder()).join())
+            .then((data) => jsonDecode(data));
+        final items = json['subject_collection_items'] as List<dynamic>;
+        final list = items.map((item) => Subject.fromJson(item)).toList();
+        yield currentState.copyWith(books: list);
+      }
+      {
+        final json = await HttpClient()
+            .getUrl(Uri.parse(
+                'https://frodo.douban.com/api/v2/subject_collection/music_single/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a'))
+            .then((request) => request.close())
+            .then((response) => response.transform(Utf8Decoder()).join())
+            .then((data) => jsonDecode(data));
+        final items = json['subject_collection_items'] as List<dynamic>;
+        final list = items.map((item) => Subject.fromJson(item)).toList();
+        yield currentState.copyWith(music: list);
+      }
     }
   }
 }

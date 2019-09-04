@@ -42,9 +42,11 @@ class Section extends StatelessWidget {
           ),
         ),
         Container(
-          height: 200,
+          height: 180,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 3.0),
+            itemExtent: 110,
             itemCount: items.length,
             itemBuilder: (context, index) {
               return Item(subject: items[index]);
