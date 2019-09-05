@@ -106,6 +106,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.2"
+  chewie:
+    dependency: "direct main"
+    description:
+      name: chewie
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.9.7"
   code_builder:
     dependency: transitive
     description:
@@ -215,7 +222,7 @@ packages:
     source: hosted
     version: "0.14.0+2"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       url: "https://pub.flutter-io.cn"
@@ -298,6 +305,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.9.6+3"
+  open_iconic_flutter:
+    dependency: transitive
+    description:
+      name: open_iconic_flutter
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.3.0"
   package_config:
     dependency: transitive
     description:
@@ -368,6 +382,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.22.2"
+  screen:
+    dependency: transitive
+    description:
+      name: screen
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.5"
   shelf:
     dependency: transitive
     description:
@@ -464,6 +485,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.8"
+  video_player:
+    dependency: transitive
+    description:
+      name: video_player
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.10.2+1"
   watcher:
     dependency: transitive
     description:
@@ -487,3 +515,4 @@ packages:
     version: "2.1.16"
 sdks:
   dart: ">=2.3.0 <3.0.0"
+  flutter: ">=1.5.0 <2.0.0"

@@ -9,6 +9,16 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('首页'),
+        brightness: Brightness.dark,
+        backgroundColor: Colors.green,
+        iconTheme: Theme.of(context).iconTheme.copyWith(
+              color: Colors.white,
+            ),
+        textTheme: Theme.of(context).textTheme.copyWith(
+              title: Theme.of(context).textTheme.title.copyWith(
+                    color: Colors.white,
+                  ),
+            ),
       ),
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) => SingleChildScrollView(

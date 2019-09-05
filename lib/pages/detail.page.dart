@@ -1,4 +1,6 @@
 import 'package:douban_movie/blocs/blocs.dart';
+import 'package:douban_movie/pages/photos.page.dart';
+import 'package:douban_movie/pages/preview.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,61 +14,97 @@ class Detail extends StatelessWidget {
                 title: Text(state.detail.title),
                 backgroundColor: Colors.white,
                 elevation: 0.0,
-                brightness: Brightness.light,
-                iconTheme: Theme.of(context).iconTheme.copyWith(
-                      color: Colors.black,
-                    ),
-                textTheme: Theme.of(context).textTheme.copyWith(
-                      title: Theme.of(context).textTheme.title.copyWith(
-                            color: Colors.black,
-                          ),
-                    ),
               ),
               backgroundColor: Color(0xfff9f5f4),
               body: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Hero(
-                          tag: 'image_${state.detail.id}',
-                          child: Card(
-                            child: Image.network(
-                              state.detail.image,
-                              width: 100,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 20),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Hero(
+                            tag: 'image_${state.detail.id}',
+                            child: Card(
+                              margin: const EdgeInsets.all(0),
+                              elevation: 4.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4.0),
+                              ),
+                              clipBehavior: Clip.hardEdge,
+                              child: Image.network(
+                                state.detail.image,
+                                width: 100,
+                              ),
                             ),
                           ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  '${state.detail.title} (${state.detail.year})',
-                                ),
-                                Text(
-                                  '${state.detail.originalTitle}(${state.detail.year})',
-                                  softWrap: true,
-                                ),
-                                Text([
-                                  state.detail.genres.join(' '),
-                                  state.detail.countries.join(' '),
-                                  '片长${state.detail.durations.join()}'
-                                ].join(' / ')),
-                              ],
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 10.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    '${state.detail.title} (${state.detail.year})',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 24.0),
+                                  ),
+                                  Text(
+                                    '${state.detail.originalTitle}(${state.detail.year})',
+                                    softWrap: true,
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  SizedBox(height: 16),
+                                  Text(
+                                    [
+                                      state.detail.genres.join(' '),
+                                      state.detail.countries.join(' '),
+                                      '片长${state.detail.durations.join()}'
+                                    ].join(' / '),
+                                    style: TextStyle(
+                                      fontSize: 12.0,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                    Text('简介'),
-                    Text(state.detail.intro),
-                    Text('影人'),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 10.0),
+                      child: Text(
+                        '简介',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text(state.detail.intro),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 10.0),
+                      child: Text(
+                        '影人',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
                     Container(
-                      height: 200,
+                      height: 180,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         padding: const EdgeInsets.symmetric(horizontal: 3.0),
@@ -99,8 +137,33 @@ class Detail extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text('预告片/剧照'),
-                          Text('全部 ${state.photoTotal} >')
+                          Text(
+                            '预告片/剧照',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => BlocProvider(
+                                    builder: (_) => PhotosBloc()
+                                      ..dispatch(InitPhotos([...state.photos])),
+                                    child: PhotosPage(),
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              '全部 ${state.photoTotal} >',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 11.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -143,13 +206,33 @@ class Detail extends StatelessWidget {
                                     ],
                                   ),
                                 )
-                              : Image.network(
-                                  state
-                                      .photos[index -
-                                          (state.trailers.length > 0 ? 1 : 0)]
-                                      .image
-                                      .normal,
-                                  fit: BoxFit.fitHeight,
+                              : GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        fullscreenDialog: true,
+                                        builder: (context) => PreviewPage(
+                                          images: state.photos
+                                              .map(
+                                                (item) => item.image.large,
+                                              )
+                                              .toList(),
+                                          index: index -
+                                              (state.trailers.length > 0
+                                                  ? 1
+                                                  : 0),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Image.network(
+                                    state
+                                        .photos[index -
+                                            (state.trailers.length > 0 ? 1 : 0)]
+                                        .image
+                                        .normal,
+                                    fit: BoxFit.fitHeight,
+                                  ),
                                 ),
                         ),
                       ),
@@ -158,8 +241,10 @@ class Detail extends StatelessWidget {
                 ),
               ),
             )
-          : Center(
-              child: CircularProgressIndicator(),
+          : Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
             ),
     );
   }

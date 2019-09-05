@@ -6,7 +6,7 @@ class DoubanApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(primaryColor: Colors.green),
+      theme: ThemeData(primaryColor: Colors.white),
       home: MainPage(),
     );
   }
