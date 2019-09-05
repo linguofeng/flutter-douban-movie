@@ -1,4 +1,5 @@
 import 'package:douban_movie/blocs/blocs.dart';
+import 'package:douban_movie/pages/detail/reviews.dart';
 import 'package:douban_movie/pages/photos.page.dart';
 import 'package:douban_movie/pages/preview.page.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,9 @@ class Detail extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0, vertical: 20),
+                        horizontal: 8.0,
+                        vertical: 20,
+                      ),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -38,6 +41,8 @@ class Detail extends StatelessWidget {
                               child: Image.network(
                                 state.detail.image,
                                 width: 100,
+                                height: 144,
+                                fit: BoxFit.fitWidth,
                               ),
                             ),
                           ),
@@ -50,8 +55,9 @@ class Detail extends StatelessWidget {
                                   Text(
                                     '${state.detail.title} (${state.detail.year})',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 24.0),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 24.0,
+                                    ),
                                   ),
                                   Text(
                                     '${state.detail.originalTitle}(${state.detail.year})',
@@ -72,6 +78,37 @@ class Detail extends StatelessWidget {
                                       color: Colors.grey,
                                     ),
                                   ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: RaisedButton(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                          ),
+                                          color: Colors.white,
+                                          elevation: 0.0,
+                                          onPressed: () {},
+                                          child: Text('想看'),
+                                        ),
+                                      ),
+                                      SizedBox(width: 10.0),
+                                      Expanded(
+                                        child: RaisedButton(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                          ),
+                                          color: Colors.white,
+                                          elevation: 0.0,
+                                          onPressed: () {},
+                                          child: Text('看过'),
+                                        ),
+                                      ),
+                                    ],
+                                  )
                                 ],
                               ),
                             ),
@@ -81,7 +118,9 @@ class Detail extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0, vertical: 10.0),
+                        horizontal: 8.0,
+                        vertical: 10.0,
+                      ),
                       child: Text(
                         '简介',
                         style: TextStyle(
@@ -95,7 +134,9 @@ class Detail extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0, vertical: 10.0),
+                        horizontal: 8.0,
+                        vertical: 10.0,
+                      ),
                       child: Text(
                         '影人',
                         style: TextStyle(
@@ -114,10 +155,13 @@ class Detail extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Image.network(
-                                state.detail.actors[index].avatar,
-                                width: 80,
-                                fit: BoxFit.fitWidth,
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(4.0),
+                                child: Image.network(
+                                  state.detail.actors[index].avatar,
+                                  width: 80,
+                                  fit: BoxFit.fitWidth,
+                                ),
                               ),
                               Text(
                                 state.detail.actors[index].name,
@@ -237,6 +281,7 @@ class Detail extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Reviews(),
                   ],
                 ),
               ),
