@@ -1,4 +1,5 @@
 import 'package:douban_movie/models/rating.dart';
+import 'package:douban_movie/models/subject.dart';
 import 'package:douban_movie/models/user.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -19,6 +20,11 @@ class Review {
   final int likersCount;
   @JsonKey(name: 'timeline_share_count')
   final int shareCount;
+  @JsonKey(name: 'content')
+  final String html;
+  final Subject subject;
+  @JsonKey(name: 'create_time')
+  final String createdAt;
 
   Review({
     this.id,
@@ -30,6 +36,9 @@ class Review {
     this.commentsCount,
     this.likersCount,
     this.shareCount,
+    this.html,
+    this.subject,
+    this.createdAt,
   });
 
   factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson(json);

@@ -42,7 +42,7 @@ class Detail extends StatelessWidget {
                                 state.detail.image,
                                 width: 100,
                                 height: 144,
-                                fit: BoxFit.fitWidth,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
@@ -71,7 +71,7 @@ class Detail extends StatelessWidget {
                                     [
                                       state.detail.genres.join(' '),
                                       state.detail.countries.join(' '),
-                                      '片长${state.detail.durations.join()}'
+                                      '片长${state.detail.durations.first}'
                                     ].join(' / '),
                                     style: TextStyle(
                                       fontSize: 12.0,

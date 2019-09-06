@@ -1,4 +1,5 @@
 import 'package:douban_movie/blocs/blocs.dart';
+import 'package:douban_movie/pages/review.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,58 +40,73 @@ class Reviews extends StatelessWidget {
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: state.reviews.length,
-                  itemBuilder: (context, index) => Container(
-                    margin: EdgeInsets.symmetric(vertical: 5.0),
-                    padding: EdgeInsets.all(8),
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            CircleAvatar(
-                              radius: 12.0,
-                              backgroundImage: NetworkImage(
-                                state.reviews[index].user.avatar,
+                  itemBuilder: (context, index) => GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => BlocProvider(
+                            builder: (_) => ReviewBloc()
+                              ..dispatch(
+                                LoadReview(id: state.reviews[index].id),
+                              ),
+                            child: ReviewPage(),
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 5.0),
+                      padding: EdgeInsets.all(8),
+                      color: Colors.white,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              CircleAvatar(
+                                radius: 12.0,
+                                backgroundImage: NetworkImage(
+                                  state.reviews[index].user.avatar,
+                                ),
+                              ),
+                              SizedBox(width: 4.0),
+                              Text(
+                                state.reviews[index].user.name,
+                                style: TextStyle(fontSize: 12.0),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: Text(
+                              state.reviews[index].title,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
                               ),
                             ),
-                            SizedBox(width: 4.0),
-                            Text(
-                              state.reviews[index].user.name,
-                              style: TextStyle(fontSize: 12.0),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: Text(
-                            state.reviews[index].title,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
+                          ),
+                          Text(
+                            state.reviews[index].content,
+                            maxLines: 4,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 6.0),
+                            child: Text(
+                              [
+                                '${state.reviews[index].commentsCount}回复',
+                                '${state.reviews[index].likersCount}有用',
+                                '${state.reviews[index].shareCount}转发',
+                              ].join(' · '),
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 13.0,
+                              ),
                             ),
                           ),
-                        ),
-                        Text(
-                          state.reviews[index].content,
-                          maxLines: 4,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 6.0),
-                          child: Text(
-                            [
-                              '${state.reviews[index].commentsCount}回复',
-                              '${state.reviews[index].likersCount}有用',
-                              '${state.reviews[index].shareCount}转发',
-                            ].join(' · '),
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 13.0,
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 )
