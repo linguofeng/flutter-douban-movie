@@ -1,6 +1,6 @@
 import 'package:douban_movie/blocs/blocs.dart';
 import 'package:douban_movie/widgets/item.dart';
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MorePage extends StatelessWidget {

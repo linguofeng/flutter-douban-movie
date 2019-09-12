@@ -17,7 +17,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       {
         final json = await http
             .get(
-                'http://localhost:8081/api/v2/subject_collection/movie_showing/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
+                'http://localhost:1234/api/v2/subject_collection/movie_showing/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
             .then((response) => response.body)
             .then((data) => jsonDecode(data));
         final items = json['subject_collection_items'] as List<dynamic>;
@@ -27,7 +27,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       {
         final json = await http
             .get(
-                'http://localhost:8081/api/v2/subject_collection/movie_hot_gaia/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
+                'http://localhost:1234/api/v2/subject_collection/movie_hot_gaia/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
             .then((response) => response.body)
             .then((data) => jsonDecode(data));
         final items = json['subject_collection_items'] as List<dynamic>;
@@ -37,7 +37,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       {
         final json = await http
             .get(
-                'http://localhost:8081/api/v2/subject_collection/tv_hot/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
+                'http://localhost:1234/api/v2/subject_collection/tv_hot/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
             .then((response) => response.body)
             .then((data) => jsonDecode(data));
         final items = json['subject_collection_items'] as List<dynamic>;
@@ -47,7 +47,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       {
         final json = await http
             .get(
-                'http://localhost:8081/api/v2/subject_collection/tv_variety_show/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
+                'http://localhost:1234/api/v2/subject_collection/tv_variety_show/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
             .then((response) => response.body)
             .then((data) => jsonDecode(data));
         final items = json['subject_collection_items'] as List<dynamic>;
@@ -57,7 +57,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       {
         final json = await http
             .get(
-                'http://localhost:8081/api/v2/subject_collection/book_bestseller/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
+                'http://localhost:1234/api/v2/subject_collection/book_bestseller/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
             .then((response) => response.body)
             .then((data) => jsonDecode(data));
         final items = json['subject_collection_items'] as List<dynamic>;
@@ -67,7 +67,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       {
         final json = await http
             .get(
-                'http://localhost:8081/api/v2/subject_collection/music_single/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
+                'http://localhost:1234/api/v2/subject_collection/music_single/items?start=0&count=20&apiKey=054022eaeae0b00e0fc068c0c0a2102a')
             .then((response) => response.body)
             .then((data) => jsonDecode(data));
         final items = json['subject_collection_items'] as List<dynamic>;

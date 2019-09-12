@@ -1,4 +1,4 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 
 /// 评分组件
 class Rate extends StatelessWidget {

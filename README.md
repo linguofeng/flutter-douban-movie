@@ -1,20 +1,20 @@
-# douban_movie
+# douban_rating
 
-豆瓣电影
+豆瓣评分
+
+## Server
+
+> 运行需要依赖豆瓣的 API，可以使用 https://github.com/linguofeng/douban-graphql-api
+
+```bash
+$ brew install go # 安装 Go
+$ git clone https://github.com/linguofeng/douban-graphql-api.git
+$ cd douban-graphql-api
+$ go run main.go
+```
 
 ## Web
 
-启动代理服务器解决 CROS
-
 ```bash
-$ cd proxy
-$ pub get
-$ dart bin/server.dart -p 8081
-```
-
-启动 webdev
-
-```bash
-$ flutter pub get
-$ flutter pub global run webdev serve
+$ flutter run -d chrome
 ```

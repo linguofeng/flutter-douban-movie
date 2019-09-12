@@ -19,7 +19,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       {
         final json = await http
             .get(
-              'http://localhost:8081/api/v2/${event.type}/${event.id}?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
+              'http://localhost:1234/api/v2/${event.type}/${event.id}?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
             )
             .then((response) => response.body)
             .then((data) => jsonDecode(data));
@@ -28,7 +28,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       {
         final json = await http
             .get(
-              'http://localhost:8081/api/v2/${event.type}/${event.id}/trailers?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
+              'http://localhost:1234/api/v2/${event.type}/${event.id}/trailers?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
             )
             .then((response) => response.body)
             .then((data) => jsonDecode(data));
@@ -46,7 +46,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       {
         final json = await http
             .get(
-              'http://localhost:8081/api/v2/${event.type}/${event.id}/photos?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
+              'http://localhost:1234/api/v2/${event.type}/${event.id}/photos?apiKey=054022eaeae0b00e0fc068c0c0a2102a',
             )
             .then((response) => response.body)
             .then((data) => jsonDecode(data));

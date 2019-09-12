@@ -28,23 +28,21 @@ packages:
       name: async
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.2.0"
-  bazel_worker:
-    dependency: transitive
-    description:
-      name: bazel_worker
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.1.21"
+    version: "2.3.0"
   bloc:
     dependency: "direct main"
     description:
-      path: "packages/bloc"
-      ref: flutter_web
-      resolved-ref: "21f4b0a21a0de1cb1e9d29ac082be55c3875ee1d"
-      url: "https://github.com/felangel/bloc"
-    source: git
+      name: bloc
+      url: "https://pub.flutter-io.cn"
+    source: hosted
     version: "0.15.0"
+  boolean_selector:
+    dependency: transitive
+    description:
+      name: boolean_selector
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.5"
   build:
     dependency: transitive
     description:
@@ -66,13 +64,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.0"
-  build_modules:
-    dependency: transitive
-    description:
-      name: build_modules
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.4.3"
   build_resolvers:
     dependency: transitive
     description:
@@ -94,13 +85,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.9"
-  build_web_compilers:
-    dependency: "direct dev"
-    description:
-      name: build_web_compilers
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.2.3"
   built_collection:
     dependency: transitive
     description:
@@ -185,32 +169,22 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.10.9"
+  flutter:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_bloc:
     dependency: "direct main"
     description:
-      path: "packages/flutter_bloc"
-      ref: flutter_web
-      resolved-ref: "21f4b0a21a0de1cb1e9d29ac082be55c3875ee1d"
-      url: "https://github.com/felangel/bloc"
-    source: git
+      name: flutter_bloc
+      url: "https://pub.flutter-io.cn"
+    source: hosted
     version: "0.21.0"
-  flutter_web:
-    dependency: "direct main"
-    description:
-      path: "packages/flutter_web"
-      ref: HEAD
-      resolved-ref: cc38319841009fcbdf632d9b03aab18d28939438
-      url: "https://github.com/flutter/flutter_web"
-    source: git
-    version: "0.0.0"
-  flutter_web_ui:
-    dependency: "direct main"
-    description:
-      path: "packages/flutter_web_ui"
-      ref: HEAD
-      resolved-ref: cc38319841009fcbdf632d9b03aab18d28939438
-      url: "https://github.com/flutter/flutter_web"
-    source: git
+  flutter_test:
+    dependency: "direct dev"
+    description: flutter
+    source: sdk
     version: "0.0.0"
   front_end:
     dependency: transitive
@@ -261,13 +235,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.1.3"
-  intl:
+  image:
     dependency: transitive
     description:
-      name: intl
+      name: image
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.16.0"
+    version: "2.1.4"
   io:
     dependency: transitive
     description:
@@ -323,7 +297,7 @@ packages:
       name: meta
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.1.6"
+    version: "1.1.7"
   mime:
     dependency: transitive
     description:
@@ -351,14 +325,21 @@ packages:
       name: path
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.6.2"
+    version: "1.6.4"
   pedantic:
     dependency: transitive
     description:
       name: pedantic
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.7.0"
+    version: "1.8.0+1"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.4.0"
   pool:
     dependency: transitive
     description:
@@ -366,21 +347,12 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.4.0"
-  protobuf:
+  provider:
     dependency: transitive
     description:
-      name: protobuf
+      name: provider
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.13.15"
-  provider:
-    dependency: "direct main"
-    description:
-      path: "packages/provider"
-      ref: flutter_web
-      resolved-ref: b3a3ec118ad8cf08a6144257f86a68bcf2020068
-      url: "https://github.com/felangel/provider"
-    source: git
     version: "3.1.0"
   pub_semver:
     dependency: transitive
@@ -402,7 +374,7 @@ packages:
       name: quiver
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.3"
+    version: "2.0.5"
   rxdart:
     dependency: transitive
     description:
@@ -410,13 +382,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.22.2"
-  scratch_space:
-    dependency: transitive
-    description:
-      name: scratch_space
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.0.4"
   shelf:
     dependency: transitive
     description:
@@ -431,6 +396,11 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.3"
+  sky_engine:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.99"
   source_gen:
     dependency: transitive
     description:
@@ -438,13 +408,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.9.4+4"
-  source_maps:
-    dependency: transitive
-    description:
-      name: source_maps
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.10.8"
   source_span:
     dependency: transitive
     description:
@@ -479,7 +442,7 @@ packages:
       name: string_scanner
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.5"
   term_glyph:
     dependency: transitive
     description:
@@ -487,6 +450,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.0"
+  test_api:
+    dependency: transitive
+    description:
+      name: test_api
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.2.5"
   timing:
     dependency: transitive
     description:
@@ -522,6 +492,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.15"
+  xml:
+    dependency: transitive
+    description:
+      name: xml
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.5.0"
   yaml:
     dependency: transitive
     description:
